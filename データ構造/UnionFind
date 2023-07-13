@@ -1,3 +1,4 @@
+#UnionFind木
 class Union_Find:
     def __init__(self, n):
         self.parent = [i for i in range(n)]
