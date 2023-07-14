@@ -12,4 +12,5 @@ def power(x,n):
     #nが奇数の場合はさらにnをかけて余剰をとる
     if n % 2 == 1:
         tmp = (tmp * x) % MOD
+        
     return tmp
