@@ -21,7 +21,7 @@ class Union_Find:
                 self.parent[root_j] = root_i
                 if self.height[root_i] == self.height[root_j]:
                     self.height[root_i] += 1
-
+    
     def is_in_group(self, i, j):
         if self.get_root(i) == self.get_root(j):
             return True
