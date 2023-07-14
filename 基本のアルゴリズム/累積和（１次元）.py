@@ -2,6 +2,7 @@
 #XからYまでの区間和を求める
 N, X, Y = map(int, input().split())
 a = [int(x) for x in input().split()]
+
 #累積和のリスト
 #index=0のセルには0を格納するためNより１つ要素を増やす
 cumu_sum = [0] * (N + 1)

@@ -1,6 +1,7 @@
 #累積和（２次元）
 N, M, Q = map(int, input().split())
 A = [[int(x) for x in input().split()] for _ in range(N)]
+
 #累積和のリスト
 #index=0,0のセルには0を格納するためN,Mとも１つ要素を増やす
 s = [[0] * (M + 1) for _ in range(N + 1)]
