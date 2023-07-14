@@ -1,9 +1,3 @@
-import sys
-import resource
-
-sys.setrecursionlimit(1000000)
-resource.setrlimit(resource.RLIMIT_STACK, (-1, -1))
-
 n, m, s, t = map(int, input().split())
 edges = [[] for _ in range(n + 1)]
 visited = [False] * (n + 1)
@@ -14,6 +8,7 @@ for i in range(m):
     edges[a].append(b)
     edges[b].append(a)
 
+#再帰のDFS
 def dfs(s):
     for j in edges[s]:
         if not visited[j]:

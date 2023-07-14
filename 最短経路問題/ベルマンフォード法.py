@@ -10,6 +10,7 @@ for _ in range(M):
 for n in range(N):
     graph[n][n] = 0
 
+#ベルマンフォード法
 #三重ループ（大外は経由地のループにする）
 for transit in range(N):
     for start in range(N):
