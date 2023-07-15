@@ -1,7 +1,5 @@
 n, m, s, t = map(int, input().split())
 edges = [[] for _ in range(n + 1)]
-visited = [False] * (n + 1)
-visited[s] = True
 
 for i in range(m):
     a, b = map(int, input().split())
@@ -9,12 +7,13 @@ for i in range(m):
     edges[b].append(a)
 
 #再帰のDFS
-def dfs(s):
+def dfs(s, visited):
+    #visitedのリストを関数の引数として保持
     for j in edges[s]:
-        if not visited[j]:
-            visited[j] = True
-            if visited[t]:
+        if j not in visited[j]:
+            visited.append(j)
+            if t in visited:
                 break
             else:
-                dfs(j)
-    return visited[t]
+                dfs(j,visited)
+    return visited
