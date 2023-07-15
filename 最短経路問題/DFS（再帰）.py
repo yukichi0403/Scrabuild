@@ -17,3 +17,6 @@ def dfs(s, visited):
             else:
                 dfs(j,visited)
     return visited
+
+#スタート地点をvisitedリストにも入れた状態で引数として与える
+dfs(s,[s])
