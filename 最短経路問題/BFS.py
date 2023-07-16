@@ -9,9 +9,6 @@ for _ in range(m):
     graph[a - 1].append(b - 1)
     graph[b - 1].append(a - 1)
 
-for i in range(n):
-    graph[i].sort()
-
 q = deque()
 q.append(s - 1)
 #sからの距離を保持する配列を定義して-1で初期化
