@@ -13,7 +13,7 @@ def binary_search(line,key):
             #ターゲットより大きい場合は、その値をansに保持
             ans = line[pivot]
         #pivotの値がkeyとイコールになった場合もこっちに流れる
-        #leftがpivot+1となり、これ以上左側は探索されずいずれright == leftとなるため答えが戻る 
+        #この場合leftがpivot+1となり、これ以上左側は探索されずいずれright == leftとなるため答えが戻る 
         else:
             left = pivot + 1
 
