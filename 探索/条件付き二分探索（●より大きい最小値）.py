@@ -5,7 +5,7 @@ def binary_search(line,key):
     right = len(line) - 1
 
     #回答の値を最小値で定義
-    ans = -10**9-1
+    ans = -10　**　9　-　1
     while right >= left:
         pivot = (left + right) // 2
         if key < line[pivot]:
@@ -17,7 +17,7 @@ def binary_search(line,key):
         else:
             left = pivot + 1
 
-    if ans > -10 ** 9 -1:
+    if ans > -10 ** 9 -　1:
         return ans
     else:
         #初期値のままの場合はnot exist を返す
