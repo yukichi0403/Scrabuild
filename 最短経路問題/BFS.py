@@ -16,8 +16,8 @@ dist = [-1] * n
 dist[s - 1] = 0
 
 while q:
-    #popleft()に変えるとDFSになる
-    now = q.pop()
+    #pop()に変えるとDFSになる
+    now = q.popleft()
     for nxt in graph[now]:
         #未探索の地点の場合のみ探索を続ける
         if dist[nxt] == -1:
