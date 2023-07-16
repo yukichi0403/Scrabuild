@@ -6,6 +6,8 @@ def binary_search(line,key):
 
     #　回答の値を最小値で定義
     ans = -10　**　9　-　1
+
+    #　rightがleftを下回るまでループ
     while right >= left:
         pivot = (left + right) // 2
         if key < line[pivot]:
