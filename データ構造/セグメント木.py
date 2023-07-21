@@ -14,7 +14,9 @@ class CSumSegTree:
         size = self.get_2pow(len(seq))
 
         #0番目は使わない
+        #葉ノードよりも上の階層の枝の部分も格納するために×２して配列作成
         self.array = [0 for i in range(2*size)]
+        #葉ノード（配列の値をそのまま格納する部分）はsizeのインデックスからスタート
         self.leaf_start = size
         
         #葉ノードの位置に与えられた配列を格納
@@ -25,26 +27,30 @@ class CSumSegTree:
 
     def initialize(self): # セグメント木の構築
         start_i = self.leaf_start
-        # 下の層から順に値を計算し格納 while start_i > 1:
-        for i in range(start_i, start_i * 2, 2): 
-            parent_i = i // 2
-            self.array[parent_i] = self.array[i] + self.array[i+1]
-        start_i = start_i // 2
+        # 下の層（最下層は葉ノード）から順に値を計算し格納
+        while start_i > 1:
+            for i in range(start_i, start_i * 2, 2): 
+                parent_i = i // 2
+                #今回は区間和をもとめる。左右の子ノードの値の合計を親の値として格納
+                self.array[parent_i] = self.array[i] + self.array[i+1]
+            #１つ上の階層に移動
+            start_i = start_i // 2
 
     def update(self, i, val): # 配列の要素の更新
         node_i = i + self.leaf_start
         self.array[node_i] = val # 葉ノードの更新
         while node_i > 1: # 上に遡って更新
             parent_i = node_i // 2
-            self.array[parent_i] = self.array[parent_i*2] +
+            self.array[parent_i] = self.array[parent_i*2] +self.array[parent_i*2+1]
             node_i = parent_i
 
-    # 部分和を求める関数
-    def findSum(self, l, r, k=1, le=0, re=-1):
+    def findSum(self, l, r, k=1, le=0, re=-1): # 部分和を求める関数
     # l: 指定する区間の左端，r: 指定する区間の右端
     # 半開区間として指定(l番目からr-1番目の部分和)
     # k: self.arrayのインデックス
-    # le: self.array[k]に保持されている部分和の区間の左端 # re: self.array[k]に保持されている部分和の区間の右端 # (le，reも半開区間として指定される.)
+    # le: self.array[k]に保持されている部分和の区間の左端 
+    # re: self.array[k]に保持されている部分和の区間の右端 
+    # (le，reも半開区間として指定される.)
 
         # 最初に呼び出した時は全区間(根ノード) 
         if re==-1:
@@ -56,8 +62,7 @@ class CSumSegTree:
         if (l <= le) and (re < r): 
             return self.array[k]
 
-        # 子ノードに下がる.sum_lは左側，sum_rは
-        # 右側の子ノードを見ていることになる.
+        # 子ノードに下がる.sum_lは左側，sum_rは右側の子ノードを見ていることになる.
         sum_l = self.findSum(l, r, 2*k, le, (le+re-1)//2) 
         sum_r = self.findSum(l, r, 2*k+1, (le+re-1)//2+1, re)
         return sum_l + sum_r

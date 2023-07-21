@@ -10,7 +10,7 @@ for i in range(m):
 def dfs(s, visited):
     #visitedのリストを関数の引数として保持
     for j in edges[s]:
-        if j not in visited[j]:
+        if j not in visited:
             visited.append(j)
             if t in visited:
                 break
