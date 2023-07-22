@@ -6,7 +6,7 @@ def spf(n):
       while j <=n:
         if spf[j] == j:
           spf[j] = i
-          j += i
+        j += i
     i += 1
   return spf
 
