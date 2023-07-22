@@ -18,7 +18,9 @@ def spf(n):
 
 def PrimeFactorization(n):
   spf_table = spf(n)
+  insu = []
   while n > 1:
-    print(spf_table[n])
+    insu.append(spf_table[n])
     n //= spf_table[n]
+  return insu
 
