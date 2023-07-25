@@ -2,7 +2,7 @@ money = 300
 item = (("みかん", 100), ("りんご", 200), ("ぶどう", 300))
 n = len(item)
 
-for i in range(2 ** n):
+for i in range(1 << n):
     bag = []
     print("pattern {}: ".format(i), end="")
     for j in range(n):  # このループが一番のポイント
