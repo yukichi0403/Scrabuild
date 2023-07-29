@@ -1,5 +1,8 @@
-from math import gcd
+import math
 
-#a,bを乗じたものを最大公約数で割る
-ans = a * b / gcd(a,b)
-print(ans)
+#x × yを最大公約数で割ったものが最小公倍数となる
+def my_lcm(x, y):
+    return (x * y) // math.gcd(x, y)
+
+print(my_lcm(6, 4))
+
