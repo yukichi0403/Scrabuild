@@ -34,5 +34,5 @@ for _ in range(M):
     graph[a].append((b,cost))
 
 
-dist = dijkstra(N, M, S, graph)
+dist = dijkstra(N, S, graph)
 
