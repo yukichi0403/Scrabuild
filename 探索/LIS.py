@@ -2,7 +2,7 @@ from bisect import bisect
 
 # N: 数列の長さ
 # A[i]: a_i の値
-def solve(N, A):
+def lis(N, A):
     INF = 10**10
 
     dp = [INF]*(N+1)
