@@ -4,7 +4,7 @@ def is_ok(arg):
     return True,False
 
 #修正
-def meguru_bisect(ng, ok):
+def binary_search(ng, ok):
     while (abs(ok - ng) > 1):
         mid = (ok + ng) // 2
         if is_ok(mid):
