@@ -1,9 +1,15 @@
 #da[i][j]:(0,0)~(i,j)の長方形の和
 def da_generate(h,w,a):
     da = [[0]*w for j in range(h)]
+    
+    #da[0][0] には、元の配列 a の (0,0) の要素の値をそのままコピー
     da[0][0] = a[0][0]
+
+    #行0に対して、1列目から最後の列までの累積和を計算して da[0][i] に格納
     for i in range(1,w):
         da[0][i] = da[0][i-1]+a[0][i]
+
+    #行２について、１行ごとにその行における累積和を計算し、１つ上の行の値に加算する
     for i in range(1,h):
         cnt_w = 0
         for j in range(w):
