@@ -1,6 +1,6 @@
 #使い方：https://github.com/shakayami/ACL-for-python/wiki/segtree
 
-class segtree():
+class Segtree():
     n=1
     size=1
     log=2
