@@ -19,18 +19,23 @@ class segtree():
             self.d[self.size+i]=V[i]
         for i in range(self.size-1,0,-1):
             self.update(i)
-          
+            
+    #p番目の値をxに変えることができる。
     def set(self,p,x):
         assert 0<=p and p<self.n
         p+=self.size
         self.d[p]=x
         for i in range(1,self.log+1):
             self.update(p>>i)
-          
+
+    #p番目の値が返ってくる
     def get(self,p):
         assert 0<=p and p<self.n
         return self.d[p+self.size]
-      
+
+    #[l,r)の範囲内での演算を求めた結果が返ってくる。 
+    #例えばセグ木関数がmaxだった場合max(A_l,...,A_{r-1})が返ってくる。 
+    #セグ木関数が足し算だった場合A_l+...+A_{r-1}が返ってくる。
     def prod(self,l,r):
         assert 0<=l and l<=r and r<=self.n
         sml=self.e
@@ -47,10 +52,12 @@ class segtree():
             l>>=1
             r>>=1
         return self.op(sml,smr)
-      
+
+    #全区間での演算結果を求める
     def all_prod(self):
         return self.d[1]
-      
+
+    #二分探索をする。ここで、始点はlであり、単調性のある関数fの実行結果が変わる切れ目を求める。
     def max_right(self,l,f):
         assert 0<=l and l<=self.n
         assert f(self.e)
@@ -73,7 +80,8 @@ class segtree():
             if (l&-l)==l:
                 break
         return self.n
-      
+
+    #二分探索をする。ここで、終点はrであり、単調性のある関数fの実行結果が変わる切れ目を求める。
     def min_left(self,r,f):
         assert 0<=r and r<=self.n
         assert f(self.e)
@@ -96,12 +104,15 @@ class segtree():
             if (r& -r)==r:
                 break
         return 0
-      
+
+    #内部処理用の関数なので使うことはあまりないかも
     def update(self,k):
         self.d[k]=self.op(self.d[2*k],self.d[2*k+1])
-      
+
+    #print関数を使うことでデバッグすることができる
     def __str__(self):
         return str([self.get(i) for i in range(self.n)])
+
 
 #使用例
 #add
