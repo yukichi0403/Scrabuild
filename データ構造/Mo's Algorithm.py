@@ -69,15 +69,21 @@ class Mo():
         prev_l, prev_r = 0, -1
         for queries_list in self.separated_queries:
             for query in queries_list:
+                #nlがクエリの指定範囲の左端、nrが右端、qiがクエリの番号
                 nl, nr, qi = query
+                
+                #nl が prev_l よりも小さい場合、前の区間から現在の区間に移る際に、新たに含まれる要素を追加
                 if nl < prev_l:
                     for i in range(nl, prev_l):
                         element = self.lis[i]
                         self.status.add(element)
+                #nl が prev_l よりも大きい場合、前の区間から現在の区間に移る際に、含まれなくなる要素を削除
                 else:
                     for i in range(prev_l, nl):
                         element = self.lis[i]
                         self.status.discard(element)
+
+                #同様に、nr と prev_r の大小を比較して、新たに含まれる要素を追加するか含まれなくなる要素を削除する操作を実施
                 if prev_r < nr:
                     for i in range(nr, prev_r, -1):
                         element = self.lis[i]
@@ -87,5 +93,7 @@ class Mo():
                         element = self.lis[i]
                         self.status.discard(element)
                 prev_l, prev_r = nl, nr
+
+                #今のクエリの答えをansに格納
                 self.ans[qi] = self.status.val
 
