@@ -1,4 +1,5 @@
 inf = float('inf')
+
 class BellmanFord():
     def __init__(self, N):
         self.N = N
