@@ -12,12 +12,12 @@ import sys
 sys.setrecursionlimit(10 ** 9)
 
 def dfs(pos, visited):   
-    seen[pos] = True
+    visited[pos] = True
     
     # 次の位置を探索する
     for next_ in adj[pos]:
         if not visited[next_]:
-            dfs(next_, visited, dist + 1)
+            dfs(next_, visited)
 
     # 帰りがけ順の処理
     """問題ごとに追記"""
