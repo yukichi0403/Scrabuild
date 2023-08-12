@@ -1,28 +1,29 @@
 #BFS
-from collections import deque
+N = int(input())
+S = [list(map(int, input().split())) for _ in range(N - 1)]
+# 無向グラフの典型入力
+from collections import defaultdict
+adj = defaultdict(list)
+for a, b in S:
+    adj[a-1].append(b-1)
+    adj[b-1].append(a-1)
 
-n, m, s, t = map(int, input().split())
+def dfs(start):
+    todo = [(0, start)]   # 初期探索場所をpush
+    seen = [False] * N
 
-graph = [[] for _ in range(n)]
-for _ in range(m):
-    a, b = map(int, input().split())
-    graph[a - 1].append(b - 1)
-    graph[b - 1].append(a - 1)
+    while todo:
+        dist, pos = todo.pop()   # popleftにするとDFS
+        
+        if seen[pos]:
+            continue
+        seen[pos] = True
 
-q = deque()
-q.append(s - 1)
-#sからの距離を保持する配列を定義して-1で初期化
-dist = [-1] * n
-dist[s - 1] = 0
+        # 行きがけ順の処理
+        """問題ごとに必要に応じて書く"""
 
-while q:
-    #pop()に変えるとDFSになる
-    now = q.popleft()
-    for nxt in graph[now]:
-        #未探索の地点の場合のみ探索を続ける
-        if dist[nxt] == -1:
-            dist[nxt] = dist[now] + 1
-            q.append(nxt)
-
-#今回はtまでの距離を出力
-print(dist[t - 1])
+        # 次の位置を探索する
+        for next_ in adj[pos]:
+            todo.append((dist + 1, next_))
+            
+    return dist
