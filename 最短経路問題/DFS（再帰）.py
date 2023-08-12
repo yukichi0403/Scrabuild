@@ -17,10 +17,15 @@ def dfs(pos, visited):
     # 次の位置を探索する
     for next_ in adj[pos]:
         if not visited[next_]:
-            dfs(next_, visited)
+            continue
 
-    # 帰りがけ順の処理
-    """問題ごとに追記"""
+        # いきがけ順の処理（帰りがけの処理とどっちがいいかは問題次第）
+        """問題ごとに追記"""
+        
+        dfs(next_, visited)
+
+        # 帰りがけ順の処理
+        """問題ごとに追記"""
 
 
 dfs(0, [False] * N)
