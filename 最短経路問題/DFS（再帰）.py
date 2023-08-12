@@ -1,22 +1,27 @@
-n, m, s, t = map(int, input().split())
-edges = [[] for _ in range(n + 1)]
+N = int(input())
+S = [list(map(int, input().split())) for _ in range(N - 1)]
 
-for i in range(m):
-    a, b = map(int, input().split())
-    edges[a].append(b)
-    edges[b].append(a)
+# 無向グラフの典型入力
+from collections import defaultdict
+adj = defaultdict(list)
+for a, b in S:
+    adj[a-1].append(b-1)
+    adj[b-1].append(a-1)
 
-#再帰のDFS
-def dfs(s, visited):
-    #visitedのリストを関数の引数として保持
-    for j in edges[s]:
-        if j not in visited:
-            visited.append(j)
-            if t in visited:
-                break
-            else:
-                dfs(j,visited)
-    return visited
+import sys
+sys.setrecursionlimit(10 ** 9)
 
-#スタート地点をvisitedリストにも入れた状態で引数として与える
-dfs(s,[s])
+def dfs(pos, visited):   
+    seen[pos] = True
+    
+    # 次の位置を探索する
+    for next_ in adj[pos]:
+        if not visited[next_]:
+            dfs(next_, visited, dist + 1)
+
+    # 帰りがけ順の処理
+    """問題ごとに追記"""
+
+
+dfs(0, [False] * N)
+
