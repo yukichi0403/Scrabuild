@@ -1,3 +1,5 @@
+from collections import deque
+
 #BFS
 N = int(input())
 S = [list(map(int, input().split())) for _ in range(N - 1)]
@@ -9,7 +11,8 @@ for a, b in S:
     adj[b-1].append(a-1)
 
 def dfs(start):
-    todo = [(0, start)]   # 初期探索場所をpush
+    todo = deque()
+    todo.append((0, start))   # 初期探索場所をpush
     seen = [False] * N
 
     while todo:
