@@ -14,3 +14,10 @@ def power(x,n):
         tmp = (tmp * x) % MOD
         
     return tmp
+
+#パターン2
+MOD = 10**9+7
+N=1000000
+p = [1]
+for n in range(N):
+    p.append(p[-1]*2%MOD)
