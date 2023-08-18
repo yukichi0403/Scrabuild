@@ -4,8 +4,10 @@ from functools import lru_cache
 @lru_cache(maxsize=1000)
 
 #例としてフィボナッチ数列の場合
-def fib_memoized(n):
-    if n < 2:
-        return n
+def fibo(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
     else:
-        return fib(n - 1) + fib(n - 2)
+        return fibo(n-1) + fibo(n-2)
