@@ -12,6 +12,9 @@ class Segtree():
         self.n=len(V)
         self.op=OP
         self.e=E
+        #セグ木のノードの数は元データ以上の数になる最小の２の冪乗（これを2Nとする）-1
+        #葉ノードはNなので葉ノード以外の部分の長さはN-1
+        #これをbit_length(ビット表示した場合の長さ、８の場合は1000で４）を使って求めている
         self.log=(self.n-1).bit_length()
         #葉ノード以外の部分の長さ＝self.size
         self.size=1<<self.log
@@ -24,8 +27,10 @@ class Segtree():
     #p番目の値をxに変えることができる。
     def set(self,p,x):
         assert 0<=p and p<self.n
+        #葉ノードにアクセスして値をxに更新
         p+=self.size
         self.d[p]=x
+        #親ノードに登っていき値を更新
         for i in range(1,self.log+1):
             self.update(p>>i)
 
