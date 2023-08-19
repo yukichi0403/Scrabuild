@@ -13,6 +13,7 @@ class Segtree():
         self.op=OP
         self.e=E
         self.log=(self.n-1).bit_length()
+        #葉ノード以外の部分の長さ＝self.size
         self.size=1<<self.log
         self.d=[E for i in range(2*self.size)]
         for i in range(self.n):
