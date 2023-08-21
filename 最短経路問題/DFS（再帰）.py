@@ -16,7 +16,7 @@ def dfs(pos, visited):
     
     # 次の位置を探索する
     for next_ in adj[pos]:
-        if not visited[next_]:
+        if visited[next_]:
             continue
 
         # いきがけ順の処理（帰りがけの処理とどっちがいいかは問題次第）
