@@ -13,6 +13,7 @@ def bfs(start):
     todo = deque()
     todo.append((0, start))   # 初期探索場所をpush
     seen = [False] * N
+    #dist_list = [float('inf')] * N
 
     while todo:
         dist, pos = todo.popleft()   # popにするとDFS
@@ -24,6 +25,7 @@ def bfs(start):
 
         # 行きがけ順の処理
         """問題ごとに必要に応じて書く"""
+        #例 dist_list[pos] = dist
 
         # 次の位置を探索する
         for next_ in adj[pos]:
