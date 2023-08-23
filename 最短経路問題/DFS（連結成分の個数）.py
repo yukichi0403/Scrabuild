@@ -1,29 +1,29 @@
-n = int(input())
-ad_list = {}
-for i in range(1, n + 1):
-    v = int(input())
-    ad_list[i] = list(map(int, input().split()))
+# 深さ優先探索
+def dfs(G, v, seen):
+    seen[v] = True
+    for next_v in G[v]:
+        if seen[next_v]:
+            continue
+        dfs(G, next_v, seen)
 
-#スタート地点と連結成分のリストを引数として関数を定義
-def dfs(v, connected_comp):
-    for i in ad_list[v]:
-        if i not in connected_comp:
-            connected_comp.append(i)
-            dfs(i, connected_comp)
-    return connected_comp
+# 頂点数と辺数
+N, M = map(int, input().split())
 
+# グラフ入力受取
+G = [[] for _ in range(N)]
+for _ in range(M):
+    a, b = map(int, input().split())
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
 
-cnt = 0
-#まだ訪れていない頂点のsetを定義
-not_visit = set(range(1, n + 1))
+# 全頂点が訪問済みになるまで探索
+count = 0
+seen = [False] * N
+for v in range(N):
+    if seen[v]:
+        continue
+    dfs(G, v, seen)
+    count += 1
 
-#訪れていない頂点が存在するまでループ
-while len(not_visit) > 0:
-    v = not_visit.pop()
-    #vから連結している頂点を訪問済みとして削除
-    not_visit -= set(dfs(v, [v]))
-    #連結成分のカウントをプラス1
-    cnt += 1
-
-
-print(cnt)
+#答え
+print(count)
