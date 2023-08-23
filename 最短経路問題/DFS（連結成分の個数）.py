@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10 ** 9)
+
 # 深さ優先探索
 def dfs(G, pos, visited):   
     visited[pos] = True
