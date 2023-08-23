@@ -30,7 +30,7 @@ for m in range(n):
 
 
 #次の書き方もある
-#だた計算量に注意
+#ただ計算量に注意
 def dfs(s, cost):
     sum = 0
     if not graph[s]:
