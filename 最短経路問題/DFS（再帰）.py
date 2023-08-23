@@ -13,19 +13,17 @@ sys.setrecursionlimit(10 ** 9)
 
 def dfs(pos, visited):   
     visited[pos] = True
+    # いきがけ順の処理（帰りがけの処理とどっちがいいかは問題次第）
+    """問題ごとに追記（path.append(pos)など）"""
     
     # 次の位置を探索する
     for next_ in adj[pos]:
         if visited[next_]:
             continue
-
-        # いきがけ順の処理（帰りがけの処理とどっちがいいかは問題次第）
-        """問題ごとに追記"""
-        
         dfs(next_, visited)
 
-        # 帰りがけ順の処理
-        """問題ごとに追記"""
+    # 帰りがけ順の処理
+    """問題ごとに追記（path.append(pos)など）"""
 
 
 dfs(0, [False] * N)
