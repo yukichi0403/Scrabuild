@@ -1,10 +1,12 @@
 # 深さ優先探索
-def dfs(G, v, seen):
-    seen[v] = True
-    for next_v in G[v]:
-        if seen[next_v]:
+def dfs(G, pos, visited):   
+    visited[pos] = True
+    # 次の位置を探索する
+    for next_pos in G[pos]:
+        if visited[next_pos]:
             continue
-        dfs(G, next_v, seen)
+        dfs(G, next_pos, visited)
+
 
 # 頂点数と辺数
 N, M = map(int, input().split())
@@ -18,11 +20,11 @@ for _ in range(M):
 
 # 全頂点が訪問済みになるまで探索
 count = 0
-seen = [False] * N
+visited = [False] * N
 for v in range(N):
-    if seen[v]:
+    if visited[v]:
         continue
-    dfs(G, v, seen)
+    dfs(G, v, visited)
     count += 1
 
 #答え
