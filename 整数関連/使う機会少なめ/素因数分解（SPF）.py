@@ -1,3 +1,5 @@
+#pythonだとTLEするのであまり使えないかも
+
 def spf(n):
   #0からnまでの各数値に対してその最小の素因数を保持する
   spf = [_ for _ in range(n+1)]; i = 2
