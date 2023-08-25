@@ -28,3 +28,19 @@ def da_calc(p,q,x,y):
     if q == 0:
         return da[x][y]-da[p-1][y]
     return da[x][y]-da[p-1][y]-da[x][q-1]+da[p-1][q-1]
+
+
+"""
+#いもす法の場合の例
+imos = [[0] * 1001 for _ in range(1001)]
+
+#左上、左下の座標はプラス、右上、右下の座標はマイナス（マイナス座標についてプラス１は不要）
+for _ in range(N):
+    lx,ly,rx,ry = map(int,input().split())
+    imos[lx][ly] += 1
+    imos[rx][ry] += 1
+    imos[lx][ry] -= 1
+    imos[rx][ly] -= 1
+
+da = da_generate(1001,1001,imos)
+"""
