@@ -119,7 +119,7 @@ class LazySegmentTree:
             r >>= 1
         return res
 
-'''使用例
+'''使用例（typical90/029で使用）
 W,N = map(int,input().split())
 st = LazySegmentTree([0] * (W), max, -float('inf'))
 for _ in range(N):
