@@ -15,9 +15,15 @@ def power(x,n):
         
     return tmp
 
+
+"""以下は遅いので基本使わない
 #パターン2
 MOD = 10**9+7
-N=1000000
+
+#2の100乗の場合
+M = 2
+N = 100
 p = [1]
 for n in range(N):
-    p.append(p[-1]*2%MOD)
+    p.append(p[-1] * M % MOD)
+    """
