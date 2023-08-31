@@ -22,10 +22,7 @@ def bfs(start):
         if seen[pos]:
             continue
         seen[pos] = True
-
-        # 行きがけ順の処理
-        """問題ごとに必要に応じて書く"""
-        #例 dist_list[pos] = dist
+        #dist_list[pos] = dist
 
         # 次の位置を探索する
         for next_ in adj[pos]:
