@@ -31,4 +31,27 @@ for g in gusu:
     k = kisu[ind]
     ans = max(ans, g + k)
 
+"""ちょうどK個選んでP以下となる組み合わせの数
+import bisect
+from itertools import combinations
+
+N, K, P = map(int, input().split())
+A = list(map(int, input().split()))
+
+group1, group2 = A[:N // 2], A[N // 2:]
+group1_price = [[] for _ in range(K + 1)]  # 0~K個選んだときの価格を格納
+
+for i in range(K + 1):
+    for c in combinations(group1, i):  # group1からi個選んだときの組み合わせ
+        group1_price[i].append(sum(c))
+    group1_price[i].sort()  # 価格を昇順にソートする→後で二分探索を行うため
+
+ans = 0
+for i in range(K + 1):
+    for c in combinations(group2, i):  # group2からi個選んだときの組み合わせ
+        # group1からK-i個選んだときの組み合わせの内、金額がP-sum(c)以下の数
+        # 二分探索を行う
+        index = bisect.bisect(group1_price[K - i], (P - sum(c)))
+        ans += index
 print(ans)
+"""
