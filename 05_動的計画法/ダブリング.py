@@ -18,9 +18,17 @@ for i in range(1, int(math.log2(K)) + 1):
     for j in range(X):
         dv[i][j] = dv[i - 1][dv[i - 1][j]]
 
-#答えを求める部分
+#2進数に直した時にどこにビットが立っているか記録
 a = []
 for i in range(int(math.log2(K)) + 1):
     #bit演算でダブリング表のどのインデックスの部分を遷移すれば答えが出せるかをaに格納
     if K　>>　i & 1:
         a.append(i)
+
+#問題ごとに答えを出力
+#例えば1からスタートして最終どの地点にいるかを答えとして出力するケース
+now = 0
+for i in a:
+    now = dv[i][now]
+
+print(now + 1)
