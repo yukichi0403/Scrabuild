@@ -1,3 +1,21 @@
+##言語アップデートで以下が使えるように
+from sortedcontainers import SortedSet
+
+l, q = map(int,input().split())
+ss = SortedSet()
+ss.add(0)
+ss.add(l)
+for _ in range(q):
+    c, x = map(int,input().split())
+    if c == 1:
+        ss.add(x)
+    else:
+        idx = ss.bisect_left(x)
+        print(ss[idx] - ss[idx - 1])
+
+
+
+
 # https://github.com/tatyam-prime/SortedSet/blob/main/SortedSet.py
 import math
 from bisect import bisect_left, bisect_right
