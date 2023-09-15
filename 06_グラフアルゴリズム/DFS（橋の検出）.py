@@ -37,7 +37,5 @@ def recdfs(p, u):
             lowlink[u] = min(lowlink[u], ord_pre[v])
         
         
-
-        
 recdfs(-1,0)
 print(Bridges)
