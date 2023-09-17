@@ -4,10 +4,10 @@ S = [list(map(int, input().split())) for _ in range(N - 1)]
 
 # 無向グラフの典型入力
 from collections import deque,defaultdict
-adj = defaultdict(list)
+graph = defaultdict(list)
 for a, b in S:
-    adj[a-1].append(b-1)
-    adj[b-1].append(a-1)
+    graph[a-1].append(b-1)
+    graph[b-1].append(a-1)
 
 def bfs(start):
     todo = deque()
@@ -25,7 +25,7 @@ def bfs(start):
         #dist_list[pos] = dist
 
         # 次の位置を探索する
-        for next_ in adj[pos]:
+        for next_ in graph[pos]:
             todo.append((dist + 1, next_))
             
     return dist
