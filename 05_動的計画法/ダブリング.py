@@ -1,4 +1,5 @@
 #ダブリング
+import math
 
 # 操作する回数のlog2だけループをまわす
 # Xは同時点で必要な状態の数（ワープ問題なら地点の数だし、余剰を求める漸化式の問題ならModの値)
@@ -22,7 +23,7 @@ for i in range(1, int(math.log2(K)) + 1):
 a = []
 for i in range(int(math.log2(K)) + 1):
     #bit演算でダブリング表のどのインデックスの部分を遷移すれば答えが出せるかをaに格納
-    if K　>>　i & 1:
+    if K >> i & 1:
         a.append(i)
 
 #問題ごとに答えを出力
